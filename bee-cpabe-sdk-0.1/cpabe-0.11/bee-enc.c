@@ -30,6 +30,8 @@ int enc(char* pub_key, char* plain, char* str_policy, char* cipher){
 	//pub_file = pub_key;
 	//in_file = in_name;
 
+	if(!strcmp(plain, cipher)){return die("%s","Plaintext can not the same as ciphertext.");}
+
     	if((policy = parse_policy_lang(str_policy)) == NULL){ return -1;}
 
 	if(!strcmp(cipher,"default")){
@@ -38,7 +40,11 @@ int enc(char* pub_key, char* plain, char* str_policy, char* cipher){
 		out_file = cipher;
 	}
 
-    	pub = bswabe_pub_unserialize(suck_file(pub_key), 1);
+	GByteArray* temp;
+
+	if((temp = suck_file(pub_key)) == NULL){return -1;}
+
+    	pub = bswabe_pub_unserialize(temp, 1);
 	
     	if(!(cph = bswabe_enc(pub, m, policy))){
 		return die("%s", bswabe_error());

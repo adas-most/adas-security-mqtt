@@ -13,7 +13,7 @@ int main(void){
 
 	if(setup("./cpabe_publickey","./cpabe_masterkey")==-1){
 		printf("SETUP ERROR!\n");
-		returm -1;
+		return -1;
 	}
 	printf("SETUP SUCCESS\n");
 	return 0;

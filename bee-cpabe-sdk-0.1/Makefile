@@ -53,11 +53,11 @@ cpabe-dec:$(example_dir)/cpabe-dec.o
 %.o: %.c *.h Makefile
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-libpbc:
-	$(shell cd ${pbc_dir}; sh configure; make; sudo make install)
+#libpbc:
+#	$(shell cd ${pbc_dir}; sh configure; make; sudo make install)
 
-libbswabe:
-	$(shell cd ${bswabe_dir}; sh configure; make; sudo make install)
+#libbswabe:
+#	$(shell cd ${bswabe_dir}; sh configure; make; sudo make install)
 
 clean:
 	rm -f libcpabe-0.1.a ${example_dir}/cpabe-setup ${example_dir}/cpabe-keygen ${example_dir}/cpabe-enc ${example_dir}/cpabe-dec ${example_dir}/*.o ${example_dir}/cpabe_publickey ${example_dir}/cpabe_masterkey ${example_dir}/cpabe_secretkey ${example_dir}/cat.jpg.cpabe
