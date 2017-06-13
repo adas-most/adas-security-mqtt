@@ -13,10 +13,17 @@
 
 int main(void)
 {
-	if(keygen("./cpabe_secretkey","./cpabe_publickey","./cpabe_masterkey",4,"jackie","boy","a = 12","s = 1000")==-1){
-		printf("KEYGEN ERROR\n");
+	if(keygen("./cpabe_secretkey_ok","./cpabe_publickey","./cpabe_masterkey",4,"jackie","boy","a = 12","s = 1000")==-1){
+		printf("OK KEYGEN ERROR\n");
 		return -1;
 	}
-	printf("KEYGEN SUCCESS\n");
+	printf("OK KEYGEN SUCCESS\n");
+	
+	if(keygen("./cpabe_secretkey_ng","./cpabe_publickey","./cpabe_masterkey",4,"jackies","boy","a = 12","s = 1000")==-1){
+		printf("NG KEYGEN ERROR\n");
+		return -1;
+	}
+	printf("NG KEYGEN SUCCESS\n");
+	
 	return 0;
 }

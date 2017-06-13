@@ -56,8 +56,9 @@ aes_128_cbc_encrypt( GByteArray* pt, element_t k )
 
   /* pad out to multiple of 128 bit (16 byte) blocks */
   zero = 0;
-  while( pt->len % 16 )
+  while( pt->len % 16 ){
     g_byte_array_append(pt, &zero, 1);
+  }
 
   ct = g_byte_array_new();
   g_byte_array_set_size(ct, pt->len);

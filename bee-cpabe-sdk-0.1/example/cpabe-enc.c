@@ -13,7 +13,8 @@
 #include "../beecpabe.h"
 
 int main(void){
-	if(enc("./cpabe_publickey","./cat.jpg","jackie and s >= 100","default")==-1){
+
+	if(fenc("./cpabe_publickey","./cat.jpg","jackie and s >= 100","default")==-1){
 		printf("ENC FAIL\n");
 		return -1;
 	}

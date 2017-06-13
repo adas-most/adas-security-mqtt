@@ -12,7 +12,7 @@
 #include "../beecpabe.h"
 
 int main(void){
-	if(dec("./cpabe_publickey","./cpabe_secretkey","./cat.jpg.cpabe")==-1){
+	if(fdec("./cpabe_publickey","./cpabe_secretkey","./cat.jpg.cpabe")==-1){
 		printf("DEC FAIL\n");
 		return -1;
 	}

@@ -17,7 +17,7 @@ int setup(char* pubkey_path, char* mstkey_path);
  *  -1: failed
  */
 
- int keygen(char* pubkey_path, char* mstkey_path, char* prikey_path, int attr_no, ...);
+int keygen(char* pubkey_path, char* mstkey_path, char* prikey_path, int attr_no, ...);
 /*  Function Name: keygen
  *  
  *  Purpose:
@@ -38,7 +38,8 @@ int setup(char* pubkey_path, char* mstkey_path);
  *  -1: failed
  */
 
- int enc(char* pubkey_path, char* plaintext_path, char* access_policy, char* ciphertext_path);
+int enc(unsigned char* pk_path, unsigned char* pt, unsigned char* policy_str, unsigned char** ct);
+int fenc(unsigned char* pk_path, unsigned char* pt_path, unsigned char* policy_str, unsigned char* ct_path);
 /*  Function Name: enc
  *  
  *  Purpose:
@@ -56,7 +57,8 @@ int setup(char* pubkey_path, char* mstkey_path);
  *  -1: failed
  */
 
- int dec(char* pubkey_path, char* prikey_path, char* ciphertext_path);
+int dec(unsigned char* pk_path, unsigned char* sk_path, unsigned char* ct, unsigned char** pt);
+int fdec(unsigned char* pb_path, unsigned char* sk_path, unsigned char* ct_path);
 /*  Function Name: dec
  *  
  *  Purpose:
