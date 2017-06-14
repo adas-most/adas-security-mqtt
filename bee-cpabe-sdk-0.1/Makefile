@@ -70,6 +70,6 @@ cpabe-encdec:$(example_dir)/cpabe-encdec.o
 
 clean:
 	rm -f libbee-cpabe-0.1.a libbee-cpabe.a
-	rm -f ${example_dir}/cpabe-setup ${example_dir}/cpabe-keygen ${example_dir}/cpabe-enc ${example_dir}/cpabe-dec ${example_dir}/*.o 
+	rm -f ${example_dir}/cpabe-setup ${example_dir}/cpabe-keygen ${example_dir}/cpabe-enc ${example_dir}/cpabe-dec ${example_dir}/cpabe-encdec ${example_dir}/*.o 
 	rm -f ${example_dir}/cpabe_publickey ${example_dir}/cpabe_masterkey ${example_dir}/cpabe_secretkey* ${example_dir}/cat.jpg.cpabe
 	$(shell cd cpabe-0.11; rm -f *.o)
