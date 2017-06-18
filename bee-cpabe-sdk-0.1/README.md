@@ -26,7 +26,7 @@ Please read INSTALL first.
 ### B.1 Build Bee-CPABE with JNI
 1. make clean
 2. make jni
-3. You will get the librart (libcpabe-x.x.so).
+3. You will get the library (libcpabe-x.x.so).
 4. You will get the JNI related files in jni directory
 	* **tw/edu/au/csie/ucan/bee/setup**: generate public key and master key (By default, mypk and mymk)
 	* **tw/edu/au/csie/ucan/bee/ketgen**: generate secret key with public key and master key. (By default, mysk_ok and mysk_ng)
