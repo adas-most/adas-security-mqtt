@@ -1,14 +1,12 @@
 package tw.edu.au.csie.ucan.bee;
 
-publuc class BeeJNI {
-	public native int setup();
-	public native int keygen();
-	public native int enc();
-	public native int dec();
+public class BeeJNI {
+	public native int setup(String pk_path, String  mk_path);
+	public native int keygen(String pk_path, String mk_path, String sk_path, int attr_no, String... params);
+	public native String enc(String pk_path, String pt, String pllicy_str);
+	public native String dec(String pk_path, String sk_path, String ct);
+	public native int fenc(String pk_path, String pt_path, String policy_str, String ct_path);
+	public native int fdec(String pk_path, String sk_path, String ct_path);
 
-	static {System.loadLibrary("bee-cpabe")}
-	
-	
-	
-	
+	static { System.loadLibrary("bee-cpabe"); };
 }

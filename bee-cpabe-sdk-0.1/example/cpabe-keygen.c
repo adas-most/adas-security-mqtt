@@ -18,8 +18,10 @@ int main(void)
 		return -1;
 	}
 	printf("OK KEYGEN SUCCESS\n");
+
+	char* p[] = {"jackies","boy","a = 12","s = 1000"};
 	
-	if(keygen("./cpabe_secretkey_ng","./cpabe_publickey","./cpabe_masterkey",4,"jackies","boy","a = 12","s = 1000")==-1){
+	if(vkeygen("./cpabe_secretkey_ng","./cpabe_publickey","./cpabe_masterkey",4,p/*{"jackies","boy","a = 12","s = 1000"}*/)==-1){
 		printf("NG KEYGEN ERROR\n");
 		return -1;
 	}

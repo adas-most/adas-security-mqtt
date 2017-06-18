@@ -12,10 +12,10 @@
 #include "common.h"
 #include "../beecpabe.h"
 
-char* pub_file   = 0;
-char* prv_file   = 0;
-char* in_file    = 0;
-char* out_file   = 0;
+//char* pub_file   = 0;
+//char* prv_file   = 0;
+//char* in_file    = 0;
+//char* out_file   = 0;
 /* int   no_opt_sat = 0; */
 /* int   report_ops = 0; */
 int   keep       = 0;
@@ -33,9 +33,10 @@ int fdec(unsigned char* pk_path, unsigned char* sk_path, unsigned char* ct_path)
 	bswabe_cph_t* cph;
 	element_t m;
 
-	pub_file = pk_path;
-	prv_file = sk_path;
-	in_file  = ct_path;
+	unsigned char* pub_file = pk_path;
+	unsigned char* prv_file = sk_path;
+	unsigned char* in_file  = ct_path;
+	unsigned char* out_file;
 
 	if(keep && !strcmp(in_file, out_file) ){
 		printf("cannot keep input file when decrypting file in place \n");
@@ -96,9 +97,9 @@ int dec(unsigned char* pk_path, unsigned char* sk_path, unsigned char* ct, unsig
 	bswabe_cph_t* cph;
 	element_t m;
 
-	pub_file = pk_path;
-	prv_file = sk_path;
-	in_file  = ct;
+	unsigned char* pub_file = pk_path;
+	unsigned char* prv_file = sk_path;
+	unsigned char* in_file  = ct;
 
 	if((sf_pf = suck_file(pub_file)) == NULL) {
 		return -1;

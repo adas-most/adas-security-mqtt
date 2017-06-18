@@ -17,7 +17,28 @@ int setup(unsigned char* pk_path, unsigned char* mk_path);
  *  -1: fail
  */
 
-int keygen(unsigned char* pk_path, unsigned char* mk_path, unsigned char* pk_path, int attr_no, ...);
+int vkeygen(unsigned char* pk_path, unsigned char* mk_path, unsigned char* sk_path, int attr_no, char** argv);
+/*  Function Name: vkeygen
+ *  
+ *  Purpose:
+ *  Generate a secret key with the given attributes with public key and master key
+ *  About the key attributes, please refer the following link 
+ *  http://acsc.cs.utexas.edu/cpabe/cpabe-keygen.html
+ *
+ *  Parameters:
+ *  1. pk_path: the path of public key
+ *  2. mk_path: the path of master key 
+ *  3. pk_path: the path of secret key
+ *  4. attr_no: the number of attributes
+ *  5. argv: a serial of attributes in two forms, non-numerical and numerical, specified by string.
+ *  (Ex. "boy", "student" for non-numerical attributes and "salary = 1000", "age >= 18" for numerical attributes)
+ *
+ *  Return:
+ *   0: success
+ *  -1: failed
+ */
+
+int keygen(unsigned char* pk_path, unsigned char* mk_path, unsigned char* sk_path, int attr_no, ...);
 /*  Function Name: keygen
  *  
  *  Purpose:
@@ -91,7 +112,7 @@ int dec(unsigned char* pk_path, unsigned char* sk_path, unsigned char* ct, unsig
  *  -1: failed
  */
 
-int fdec(unsigned char* pb_path, unsigned char* sk_path, unsigned char* ct_path);
+int fdec(unsigned char* pk_path, unsigned char* sk_path, unsigned char* ct_path);
 /*  Function Name: fdec
  *  
  *  Purpose:
