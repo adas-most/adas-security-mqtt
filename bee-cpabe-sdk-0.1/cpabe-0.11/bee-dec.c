@@ -96,6 +96,7 @@ int dec(unsigned char* pk_path, unsigned char* sk_path, unsigned char* ct, unsig
 	GByteArray* sf_prvf;
 	bswabe_cph_t* cph;
 	element_t m;
+	int dec_len;
 
 	unsigned char* pub_file = pk_path;
 	unsigned char* prv_file = sk_path;
@@ -109,6 +110,7 @@ int dec(unsigned char* pk_path, unsigned char* sk_path, unsigned char* ct, unsig
 	}
 
 	file_len = *((int*)in_file);
+	printf("file len= %d \n",file_len);
 	guint aes_len = *((guint*)(in_file+4));
 	guint cph_len = *((guint*)(in_file+8));
 	
@@ -141,7 +143,7 @@ int dec(unsigned char* pk_path, unsigned char* sk_path, unsigned char* ct, unsig
 	g_byte_array_free(aes_buf, 1);
 
 	*pt = plt->data;
-
+	dec_len = plt->len;
 	//if(strlen(in_file) > 6 && !strcmp(in_file + strlen(in_file) - 6, ".cpabe") ){
 	//	out_file = g_strndup(in_file, strlen(in_file) - 6);
 	//}else{
@@ -156,5 +158,5 @@ int dec(unsigned char* pk_path, unsigned char* sk_path, unsigned char* ct, unsig
 	//if( !keep )
 	//	unlink(in_file);
 
-	return 0;
+	return dec_len;
 }

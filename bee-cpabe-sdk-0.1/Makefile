@@ -20,7 +20,7 @@ JNI_H_PATH = ${JAVA_PATH}/include
 JNI_OS_H_PATH = ${JAVA_PATH}/include/linux
 
 CC = gcc
-CFLAGS  = -O3 -Wall -g \
+CFLAGS  = -O3 -Wall -g -fPIC \
 	-I${JNI_H_PATH} \
 	-I${JNI_OS_H_PATH} \
 	-I/usr/include/glib-2.0 \

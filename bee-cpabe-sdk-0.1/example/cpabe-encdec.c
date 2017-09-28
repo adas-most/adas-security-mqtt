@@ -20,10 +20,13 @@ int main(void){
 	scanf("%s", plaintext);
 
 	// ENCRYPTION PROCESS
-	if(enc("./cpabe_publickey", plaintext, "jackie and s >= 100", &ciphertext)==-1){
+	int enc_length = 0;
+	enc_length=enc("./cpabe_publickey", plaintext, "jackie and s >= 100", &ciphertext);
+	if(enc_length==-1){
 		printf("ENC FAIL\n");
 		return -1;
 	}
+	printf("enc_length = %d\n",enc_length);
 	printf("ENC SUCCESS: (%s->%s)\n", plaintext, ciphertext);
 
 	// DECRYPTION PROCESS

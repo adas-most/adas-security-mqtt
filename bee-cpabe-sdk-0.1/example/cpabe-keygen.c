@@ -13,7 +13,7 @@
 
 int main(void)
 {
-	if(keygen("./cpabe_secretkey_ok","./cpabe_publickey","./cpabe_masterkey",4,"jackie","boy","a = 12","s = 1000")==-1){
+	if(keygen("./cpabe_secretkey","./cpabe_publickey","./cpabe_masterkey",4,"jackie","boy","a = 12","s = 1000")==-1){
 		printf("OK KEYGEN ERROR\n");
 		return -1;
 	}
