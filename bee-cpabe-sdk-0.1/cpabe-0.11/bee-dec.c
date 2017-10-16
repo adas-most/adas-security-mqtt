@@ -110,7 +110,6 @@ int dec(unsigned char* pk_path, unsigned char* sk_path, unsigned char* ct, unsig
 	}
 
 	file_len = *((int*)in_file);
-	printf("file len= %d \n",file_len);
 	guint aes_len = *((guint*)(in_file+4));
 	guint cph_len = *((guint*)(in_file+8));
 	

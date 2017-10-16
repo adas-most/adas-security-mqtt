@@ -31,11 +31,14 @@ int main(void){
 
 	// DECRYPTION PROCESS
 	unsigned char* result = 0;
-
-	if(dec("./cpabe_publickey", "./cpabe_secretkey", ciphertext, &result)==-1){
+	int dec_length = 0;
+	
+	dec_length = dec("./cpabe_publickey", "./cpabe_secretkey", ciphertext, &result);
+	if(dec_length==-1){
 		printf("DEC FAIL\n");
 		return -1;
 	}
+	printf("dec_length = %d\n", dec_length);
 	printf("DEC SUCCESS: (%s->%s)\n", ciphertext, result);
 
 	free(ciphertext);

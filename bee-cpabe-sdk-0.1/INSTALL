@@ -2,56 +2,56 @@ Bee-CPABE SDK supports C/Linux in native.
 JNI is provided for JAVA developers. 
 
 I.  Installation for native C
-If you are native C developers, you can install 
-glib, gmp, and openssl by package mamager. 
-Then, install libbswabe and pbc manally.
 
-1. Install libbswabe
-cd libbswabe-0.9
-./configure --prefix=/usr/local
-make CC="gcc -fPIC"
-sudo make install
+Step 1. Install glib, gmp, and openssl by package mamager.
+(It is the other story if your target is embedded system)
 
-2. Install pbc
+Step 2. Install pbc library (https://crypto.stanford.edu/pbc/)
 cd pbc-0.5.14
 ./configure --prefix=/usr/local --with-pic
 make
 sudo make install
 
-3. Build libbee-cpabe-0.1.a
+Step 3. Install libbswabe library (http://acsc.cs.utexas.edu/cpabe/)
+cd libbswabe-0.9
+./configure --prefix=/usr/local
+make CC="gcc -fPIC"
+sudo make install
+
+Step 4. Build libbee-cpabe-0.1.a
 make
+sudo make install
 
 II. Installation for Java with JNI
-You need to re-compile all required libraries for
-supporting JNI. 
+You need to re-compile all required libraries for supporting JNI. 
 
-1. Install libbswabe
-cd libbswabe-0.9
-./configure --prefix=/usr/local
-make CC="gcc -fPIC"
-sudo make install
-
-2. Install pbc
-cd pbc-0.5.14
-./configure --prefix=/usr/local --with-pic
-make
-sudo make install
-
-3. Install glib
+Step 1. Install glib
 ./configure --prefix=/usr/local --enable-static --with-pic
 make
 sudo make install
 
-4. Install gmp
+Step 2. Install gmp
 ./configure --prefix=/usr/local --enable-static --with-pic
 make
 sudo make install
 
-5. Install openssl
+Step 3. Install openssl
 ./config
 make CC="gcc -fPIC"
 sudo cp libcrypto.a /usr/local/lib
 sudo cp libssl.a /usr/local/lib
 
-6. Build libbee-cpabe-0.1.so
-make libbee-cpabe-0.1.so 
+Step 4. Install pbc
+cd pbc-0.5.14
+./configure --prefix=/usr/local --with-pic
+make
+sudo make install
+
+Step 5. Install libbswabe
+cd libbswabe-0.9
+./configure --prefix=/usr/local
+make CC="gcc -fPIC"
+sudo make install
+
+Step 6. Build shared library
+make jni

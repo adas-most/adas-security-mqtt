@@ -96,3 +96,11 @@ clean:
 	cp -f ${example_dir}/cat.jpg.bak ${example_dir}/cat.jpg
 	cp -f ${jni_dir}/data.txt.bak ${jni_dir}/data.txt
 	$(shell cd cpabe-0.11; rm -f *.o)
+
+install:
+	sudo cp libbee-cpabe-0.1.a /usr/local/lib
+	sudo ln -f -s /usr/local/lib/libbee-cpabe-0.1.a /usr/local/lib/libbee-cpabe.a
+
+uninstall:
+	sudo rm /usr/local/lib/libbee-cpabe-0.1.a
+	sudo rm /usr/local/lib/libbee-cpabe.a
