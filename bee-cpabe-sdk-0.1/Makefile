@@ -51,6 +51,7 @@ jni: libbee-cpabe-0.1.so
 	${JAVA_BIN_PATH}/javac -cp ${jni_dir} ${jni_package_dir}/keygen.java
 	${JAVA_BIN_PATH}/javac -cp ${jni_dir} ${jni_package_dir}/enc.java
 	${JAVA_BIN_PATH}/javac -cp ${jni_dir} ${jni_package_dir}/dec.java
+	${JAVA_BIN_PATH}/javac -cp ${jni_dir} ${jni_package_dir}/encdec.java
 
 libbee-cpabe-0.1.so: ${cpabe_dir}/bee-setup.o ${cpabe_dir}/common.o ${cpabe_dir}/bee-enc.o ${cpabe_dir}/policy_lang.o ${cpabe_dir}/bee-keygen.o ${cpabe_dir}/bee-dec.o ${jni_dir}/BeeJNI.o
 	$(CC) -shared -o $@ $^ /usr/local/lib/libbswabe.a /usr/local/lib/libpbc.a /usr/local/lib/libgmp.a /usr/local/lib/libglib-2.0.a /usr/local/lib/libssl.a /usr/local/lib/libcrypto.a

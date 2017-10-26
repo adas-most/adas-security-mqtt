@@ -1,4 +1,5 @@
 #include <jni.h>
+#include <stdbool.h>
 #include "BeeJNI.h"
 #include "../beecpabe.h"
 
@@ -42,7 +43,7 @@ JNIEXPORT jint JNICALL Java_tw_edu_au_csie_ucan_bee_BeeJNI_keygen
 	return vkeygen(sk, pk, mk, argc, argv);
 }
 
-JNIEXPORT jstring JNICALL Java_tw_edu_au_csie_ucan_bee_BeeJNI_enc
+JNIEXPORT jbyteArray JNICALL Java_tw_edu_au_csie_ucan_bee_BeeJNI_enc
 	(JNIEnv * env, jobject obj, jstring pk_path, jstring pt_str, jstring policy_str) {
 	unsigned char *pk = (*env)->GetStringUTFChars(env, pk_path, 0);
 	unsigned char *pt = (*env)->GetStringUTFChars(env, pt_str, 0);
@@ -50,31 +51,40 @@ JNIEXPORT jstring JNICALL Java_tw_edu_au_csie_ucan_bee_BeeJNI_enc
 
 	unsigned char* ct;
 
-	if(enc(pk, pt, policy, &ct) == -1){
+	int len = 0;
+
+	if((len = enc(pk, pt, policy, &ct)) == -1){
 		return NULL;
 	}
 
-	jstring jstrBuf = (*env)->NewStringUTF(env, ct);
-
-	return jstrBuf;
+	jbyteArray bytes = (*env)->NewByteArray(env, len);
+	(*env)->SetByteArrayRegion(env, bytes, 0, len, (jbyte*)ct);
+	
+	return bytes;
 }
 
 
-JNIEXPORT jstring JNICALL Java_tw_edu_au_csie_ucan_bee_BeeJNI_dec
-	(JNIEnv * env, jobject obj, jstring pk_path, jstring sk_path, jstring ct_str) {
+JNIEXPORT jbyteArray JNICALL Java_tw_edu_au_csie_ucan_bee_BeeJNI_dec
+	(JNIEnv * env, jobject obj, jstring pk_path, jstring sk_path, jbyteArray ct_str) {
 	unsigned char *pk = (*env)->GetStringUTFChars(env, pk_path, 0);
 	unsigned char *sk = (*env)->GetStringUTFChars(env, sk_path, 0);
-	unsigned char *ct = (*env)->GetStringUTFChars(env, ct_str, 0);
+	jboolean isCopy;
+	jbyte* ct = (*env)->GetByteArrayElements(env, ct_str, &isCopy); 
 
 	unsigned char* pt;
 
-	if(dec(pk, sk, ct, &pt) == -1){
+	int len = 0;
+
+	if((len = dec(pk, sk, (unsigned char*)ct, &pt)) == -1){
 		return NULL;
 	}
 
-	jstring jstrBuf = (*env)->NewStringUTF(env, pt);
+	(*env)->ReleaseByteArrayElements(env, ct_str, ct, 0);
 
-	return jstrBuf;
+	jbyteArray bytes = (*env)->NewByteArray(env, len);
+	(*env)->SetByteArrayRegion(env, bytes, 0, len, (jbyte*)pt);
+
+	return bytes;
 }
 
 JNIEXPORT jint JNICALL Java_tw_edu_au_csie_ucan_bee_BeeJNI_fenc
