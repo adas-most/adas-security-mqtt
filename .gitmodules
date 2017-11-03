@@ -1,0 +1,3 @@
+[submodule "beebit-cpabe-sdk"]
+	path = beebit-cpabe-sdk
+	url = https://github.com/ucanlab/beebit-cpabe-sdk.git
