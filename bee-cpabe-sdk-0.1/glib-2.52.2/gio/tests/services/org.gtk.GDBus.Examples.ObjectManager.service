@@ -1,3 +1,0 @@
-[D-BUS Service]
-Name=org.gtk.GDBus.Examples.ObjectManager
-Exec=/home/ucanadmin/MQTT/adas-security-mqtt/bee-cpabe-sdk-0.1/glib-2.52.2/gio/tests/gdbus-example-objectmanager-server
