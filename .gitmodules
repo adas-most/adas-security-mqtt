@@ -1,3 +1,6 @@
 [submodule "beebit-cpabe-sdk"]
 	path = beebit-cpabe-sdk
 	url = https://github.com/ucanlab/beebit-cpabe-sdk.git
+[submodule "beebit-seco-api"]
+	path = beebit-seco-api
+	url = https://github.com/ucanlab/beebit-seco-api
